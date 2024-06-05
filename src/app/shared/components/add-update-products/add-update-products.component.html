@@ -1,0 +1,74 @@
+<app-header isModal="true" [title]="producto ? 'Actualizar Producto' : 'Agregar Producto'"></app-header>
+
+<ion-content>
+
+
+  <ion-content>
+    <div class="d-flex-center">
+        <!--formulario-->
+        <form [formGroup]="form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+         
+
+            <!--este es el input del nombre-->        
+            <app-inputs
+            autocomplete="name"
+            [control]="form.controls.name"
+            type="text"
+            label="Nombre">
+            </app-inputs>
+            <!--esta es la validacionde name-->
+            <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched ">
+               <div *ngIf="form.controls.name.errors?.['required']">Este campo es requerido</div> 
+               <div *ngIf="form.controls.name.errors?.['minLenght']">El nombre debe tener almenos 4 caracteres</div> 
+            </div>
+
+            <!--este es el input del precio-->        
+            <app-inputs
+            [control]="form.controls.price"
+            type="number"
+            label="Precio">
+            </app-inputs>
+            <!--esta es la validacionde price-->
+            <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched ">
+               <div *ngIf="form.controls.price.errors?.['required']">Este campo es requerido</div> 
+               <div *ngIf="form.controls.price.errors?.['min']">El precio debe ser minimo 0</div> 
+            </div>
+
+            <!--este es el input del tipo-->        
+            <app-inputs
+            [control]="form.controls.tipo"
+            type="text"
+            label="Tipo de Producto">
+            </app-inputs>
+            <!--esta es la validacionde tipo-->
+            <div class="validators" *ngIf="form.controls.tipo.errors && form.controls.tipo.touched ">
+               <div *ngIf="form.controls.tipo.errors?.['required']">Este campo es requerido</div> 
+               <div *ngIf="form.controls.tipo.errors?.['minLenght']">El nombre debe tener almenos 4 caracteres</div> 
+            </div>
+
+                <!--este es el input del descrpcion-->        
+                <app-inputs
+                [control]="form.controls.descripcion"
+                type="text"
+                label="Descripcion de Producto">
+                </app-inputs>
+                <!--esta es la validacionde descripcion-->
+                <div class="validators" *ngIf="form.controls.descripcion.errors && form.controls.descripcion.touched ">
+                   <div *ngIf="form.controls.descripcion.errors?.['required']">Este campo es requerido</div> 
+                   <div *ngIf="form.controls.descripcion.errors?.['minLenght']">El nombre debe tener almenos 4 caracteres</div> 
+                </div>
+       
+      
+        
+            <!--este es el boton de ingresar-->
+            <ion-button   mode="ios" class="ionm-margin" type="submit" [disabled]="form.invalid">
+               {{producto ? 'Actualizar Producto' : 'Agregar Producto'}}
+              <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+            </ion-button>
+        </form>
+    </div>
+
+
+    
+
+</ion-content>

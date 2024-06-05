@@ -1,0 +1,15 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+
+  <!--CERRAR MODAL-->
+  <ion-button *ngIf="isModal" (click)="dismissModal()">
+    <ion-icon name="close-circle-outline"></ion-icon>
+  </ion-button>
+
+
+    <ion-title>
+      <Strong>{{title}}</Strong>
+      <div class="admin">A D M I N</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>

@@ -1,0 +1,49 @@
+<app-header title=" Productos"></app-header>
+
+<ion-content >
+
+    <ion-list>
+        <ion-item-sliding class="product-item" *ngFor="let p of products">
+            <ion-item>
+                <ion-label>
+                    <div class="name">{{p.name}}</div>
+                    <div class="data">
+                        <strong>Precio:</strong> {{p.price | currency: 'USD'}} <br>
+                        <strong>Tipo:</strong> {{p.tipo}}<br>
+                        <strong>Descripcion:</strong> {{p.descripcion}}
+
+                    </div>
+                
+                </ion-label>
+            </ion-item>
+
+            <!--Opciones-->
+            <ion-item-options>
+
+                <!--Editar-->
+                <ion-item-option (click)="addUpdateProduct(p)">
+                    <ion-icon class="option-btn"  name="create-outline"></ion-icon>
+                </ion-item-option>
+
+                <!--Eliminar-->
+                <ion-item-option (click)="presentAlertConfirm(p)" color="danger">
+                    <ion-icon  class="option-btn" name="trash-outline"></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+
+
+            
+
+    
+        </ion-item-sliding>
+    </ion-list>
+
+    <!--Nuevo Producto-->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="addUpdateProduct()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+ 
+</ion-content>
